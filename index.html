@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="C:\WSA_Bootstrap_Course_Material\TemplatePrograms\css\bootstrap.min.css">
+    <style>
+    form
+    {
+        width: 100%;
+        height:auto;
+        background-color: rgb(207, 207, 207);
+    }
+    label
+    {
+        font-size: 1.1rem;
+        color: black;
+    }
+    input[type="text"]
+    {
+        width: 97%;
+        height: 2.5rem;
+    }
+    input[type="checkbox"]
+    {
+        width: 40px;
+        height: 25px;
+        align-items: center;
+
+    }
+    .div2
+    {
+        width: 70%;
+        margin-left: 8rem;
+    }
+    #div1
+    {
+        width: auto;
+        height: 40vh;
+        border:1px solid gray;
+        overflow:scroll;
+    }
+    #div1 .row
+    {
+        margin: 0%;
+    }
+    #div1 .row .col-4 
+    {
+        background-color: rgb(146, 151, 153);
+        /* border: 1px solid black; */
+        text-align: center;
+    }
+    
+    #div1 .row .col-4  span
+    {
+        color: brown;
+        font-size: 1.5rem;
+    
+    }
+    #div1 #rowHead .col-4 
+    {
+        color: rgb(47, 17, 17);
+        background-color: black;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    #div1 #ListRow .col-4 
+    {
+        background-color:rgb(230, 230, 162);
+        color: rgb(41, 2, 38);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+    }
+    #div1 .row .col-4
+    {
+        list-style-type: none;
+    }
+    ul input[type="button"]
+    {
+        border: none;
+        background-color:rgb(83, 90, 88);
+        color: white;
+        width: 6rem;
+        height: 2.5rem;
+        margin-bottom: 1.8%;
+        margin-left: 5%;
+        font-size: 1rem;
+        border-radius: 28px;
+
+    }
+  
+    </style>
+</head>
+<body>
+    <div class="div2">
+       <center> <h1>ToDo List</h1></center>
+        <nav class="navbar navbar-expand-sm  bg-dark navbar-dark ">
+
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="#">
+            <!-- <img src="./images/bootstrap-solid.svg" width="30" height="30" alt="image"> -->
+            </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-menu" aria-controls="my-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+    
+            
+            <div class="collapse navbar-collapse justify-content-left" id="my-menu">
+                <ul class="navbar-nav">
+                    <!-- Active item -->
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="#">Personal</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="#">Shoping</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="#">Weekly</a>
+                    </li>
+                    <li class="nav-item px-3">  
+                       <a class="nav-link " href="#">Monthly</a>
+                    </li>
+                </ul>
+            </div>
+           
+        </nav>
+       
+        <h3>Add a list items</h3>
+        <div id="div1" class="  "> 
+            <div class="row" id="rowHead">
+                <div class="col-4">
+                        <span>Task name</span>
+                </div>
+                <div class="col-4">
+                        <span>Categary</span>
+                </div>
+                <div class="col-4">
+                        <span>Clear task</span>
+                </div>
+            </div>
+            <div id="ListRow"class="row ">
+            <ol id="todoList1" class="col-4">
+                
+                    
+            </ol>
+            <ol id="todoList2" class="col-4">
+                
+                </ol>
+            <ul id="todoList3" class="col-4">
+            
+            </ul>
+            </div>
+        </div>
+        <form>
+            <div class="form-row mt-3 ml-3">
+                    <div class="form-group col-md-12">
+                        <label for="firstName col-form-label" class="d-none d-md-inline-block">Task Name</label>
+                        <input type="text" class="form-control" id="todoInput1" placeholder="">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="lastName" class="d-none d-md-inline-block">Categary</label>
+                        <input type="text" class="form-control" id="todoInput2" placeholder="">
+                    </div>
+                    <input type="button" value="Add Items" onclick="Add()">
+        </form>
+
+      
+
+
+
+    <script src="C:\WSA_Bootstrap_Course_Material\TemplatePrograms\jquery\jquery-3.3.1.slim.min.js"></script>
+    <script src="C:\WSA_Bootstrap_Course_Material\TemplatePrograms\popper.js\1.13.0"></script>
+    <script src="C:\WSA_Bootstrap_Course_Material\TemplatePrograms\js\bootstrap.min.js"></script>
+</body>
+<script>
+    var row=0;
+   function Add()
+    {
+        var item = document.getElementById("todoInput1").value
+        var cat =document.getElementById("todoInput2").value
+
+        if((todoInput1.value != "") && (todoInput2.value != ""))
+        {
+        var text = document.createTextNode(item)
+        var text2 = document.createTextNode(cat)
+        var check = document.createElement('input');
+        check.setAttribute('type','checkbox');
+        check.setAttribute("onclick","check1("+row+")");
+        check.setAttribute("id","checkMode"+row)
+        var newbtn = document.createElement('input')
+        newbtn.setAttribute('type','button');
+        newbtn.setAttribute("value","Delete");
+        newbtn.setAttribute("onclick","delete1("+row+")");
+        
+        var newbtn2 = document.createElement('input')
+        newbtn2.setAttribute('type','button');
+        newbtn2.setAttribute("value","Edit");
+        newbtn2.setAttribute("onclick","edit1("+row+")");
+        newbtn2.setAttribute("class","editMode");
+
+        var newItem = document.createElement("p");
+        var newCat = document.createElement("p");
+        newItem.setAttribute("id","contentItem"+row)
+        newCat.setAttribute("id","contentCat"+row)
+        newbtn.setAttribute("id","contentBtn"+row)
+        newbtn2.setAttribute("id","contentBtn2"+row)
+        var checkItem = document.createElement("span");
+        var btnItem = document.createElement("span");
+        var btnItem2=document.createElement("span")
+        // break1=document.createElement("br");
+        // break1.appendChild(btnItem2);
+     
+        newItem.appendChild(text);
+        newCat.appendChild(text2);
+        btnItem.appendChild(newbtn);
+        btnItem2.appendChild(newbtn2);
+        checkItem.appendChild(check);
+
+
+       
+        document.getElementById("todoList1").appendChild(newItem);
+        document.getElementById("todoList2").appendChild(newCat);
+        document.getElementById("todoList3").appendChild(checkItem);
+        document.getElementById("todoList3").appendChild(btnItem2);
+        document.getElementById("todoList3").appendChild(btnItem);
+       
+       
+        row++;
+        }
+        else
+        {
+            alert("Please insert a value!");
+        }
+    }
+
+    // Delete Task
+    function delete1(ID)
+    {
+        document.getElementById("contentItem"+ID).remove();
+        document.getElementById("contentCat"+ID).remove();
+        document.getElementById("contentBtn"+ID).remove();
+        document.getElementById("contentBtn2"+ID).remove();
+        document.getElementById("checkMode"+ID).remove();
+        
+    }
+
+    // Edit Task
+    function edit1(ID) {
+
+    var x = document.getElementById("contentItem"+ID);
+    var a = document.getElementById("contentCat"+ID);
+    var y = document.getElementById("contentBtn2"+ID);
+    if (x.contentEditable == "true" && a.contentEditable=="true") 
+    {
+        x.contentEditable = "false";
+        a.contentEditable="false";
+        x.style.border="none";
+        a.style.border="none";
+        x.style.backgroundColor="rgb(230, 230, 162)";
+        a.style.backgroundColor="rgb(230, 230, 162)";
+        y.style.border="none";
+        y.value="Edit";
+        y.style.backgroundColor="rgb(83, 90, 88)";
+       
+    }
+    else 
+    {
+        x.contentEditable = "true";
+        a.contentEditable="true";
+        x.style.backgroundColor="white";
+        a.style.backgroundColor="white";
+        y.value="Save"
+        y.style.backgroundColor="Black";
+        y.style.color="white";
+        
+    }
+}
+
+function check1(ID)
+{
+    var x = document.getElementById("contentItem"+ID)
+    var y = document.getElementById("contentCat"+ID)
+   
+    if (document.getElementById("checkMode"+ID).checked ==true)
+    {
+        x.style.textDecoration="line-through";
+        y.style.textDecoration="line-through";
+    }
+    if(document.getElementById("checkMode"+ID).checked ==false)
+    {
+        x.style.textDecoration="none";
+        y.style.textDecoration="none";
+    }
+}
+  
+</script>
+</html> 
